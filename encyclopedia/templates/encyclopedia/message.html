@@ -1,0 +1,10 @@
+{% extends "encyclopedia/layout.html" %} {% block title %} Encyclopedia
+{%endblock %} {% block body %}
+
+<!-- Show error message -->
+{% if error_message %}
+<h3 class="alert alert-danger">{{ error_message }}</h3>
+{% else %}
+<!-- Show success message -->
+<h3 class="alert alert-success">{{ success_message }}</h3>
+{% endif %} {% endblock %}

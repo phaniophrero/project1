@@ -1,0 +1,18 @@
+{% extends "encyclopedia/layout.html" %} {% block title %} Encyclopedia
+{%endblock %} {% load static %} {% block body %}
+
+<div class="container">
+  <header class="d-flex align-items-center justify-content-between mt-4">
+    <!-- <h2 class="display-6 mr-4">{{entry}}</h2> -->
+    <a href="/wiki/{{entry}}/edit/" class="btn btn-primary jus" role="button">
+      Edit Page
+    </a>
+  </header>
+  <hr />
+
+  <article>
+    <p>{{content | safe}}</p>
+  </article>
+</div>
+
+{% endblock %}

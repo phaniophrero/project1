@@ -1,0 +1,24 @@
+{% extends "encyclopedia/layout.html" %} {% block title %} Encyclopedia
+{%endblock %} {% block body %}
+
+<header class="mt-4 mb-4">
+  <h2 class="title">Search Results</h2>
+  <hr />
+</header>
+
+<ul class="list-unstyled">
+  {% for page in results %}
+  <li class="card mb-4 p-3 search-results-card">
+    <h3>{{ page.title }}</h3>
+    <p>Read more about <a href="/{{page}}">{{ page }}</a> page</p>
+  </li>
+  {% empty %}
+  <li class="d-flex flex-sm-column">
+    <h4 class="title-h4">No results found!</h4>
+    <h4 class="subtitle-h4">Click the button below to go back.</h4>
+    <a class="btn btn-primary mt-2 go-back-link" href="/">Go back</a>
+  </li>
+  {% endfor %}
+</ul>
+
+{% endblock %}

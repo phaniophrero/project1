@@ -1,0 +1,73 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <title>{% block title %}{% endblock %}</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+    <link href="{% static 'encyclopedia/styles.css' %}" rel="stylesheet" />
+  </head>
+  <body>
+    <div class="row col-lg-10 col-md-9">
+      <div class="sidebar col-lg-3 col-md-3">
+        <h2>Wiki</h2>
+        <form
+          class="search-form"
+          action="{% url 'wiki:search' %}"
+          method="POST"
+        >
+          {% csrf_token %}
+          <div class="input-group mb-3">
+            <!--Search bar-->
+            <input
+              type="text"
+              class="search form-control"
+              placeholder="Search Encyclopedia"
+              name="q"
+            />
+            <button
+              class="btn btn-primary"
+              style="
+                width: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin-left: 10px;
+              "
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-search"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+                />
+              </svg>
+            </button>
+          </div>
+        </form>
+        <div>
+          <a href="{% url 'wiki:index' %}">Home</a>
+        </div>
+        <div>
+          <a href="{% url 'wiki:create-new-page' %}">Create New Page</a>
+        </div>
+        <div>
+          <a href="{% url 'wiki:random-page' %}">Random Page</a>
+        </div>
+        {% block nav %} {% endblock %}
+      </div>
+      <div class="main col-md-9">{% block body %} {% endblock %}</div>
+    </div>
+  </body>
+</html>
